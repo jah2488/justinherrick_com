@@ -1,0 +1,17 @@
+<article>
+  <header>
+    <h1>
+      <a href="/posts/<%= title.gsub(" ", "-") if title %>"><%= title %></a>
+    </h1>
+  </header>
+  <hr>
+  <div id='post'>
+    <div>
+      <%= body %>
+    </div>
+  </div>
+  <footer>
+  <p> <%= date %> | <%= tags %> </p>
+  </footer>
+</article>
+

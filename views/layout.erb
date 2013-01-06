@@ -25,6 +25,9 @@
         <p>Follow me <a href="twitter.com/jah2488">@JAH2488</a>.</p>
       </div>
       <div id="content">
+        <% if request.path_info != "/" %>
+          <a href="<%= url("/") %>"><div id="nav"><h1>Home</h1></div></a>
+        <% end %>
         <%= yield %>
       </div>
     </div>

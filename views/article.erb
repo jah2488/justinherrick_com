@@ -11,7 +11,7 @@
     </div>
   </div>
   <footer>
-  <p> <%= date %> | <%= tags %> </p>
+  <p> <%= date %> | <%= tags.map { |tag|  "<a href='" + url("tagged/" + tag) + "'>#{tag}</a> " } %> </p>
   </footer>
 </article>
 

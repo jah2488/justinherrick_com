@@ -1,37 +1,27 @@
 require 'sinatra'
-require_relative 'lib/record_keeper'
-
-set :static_cache_control, [:public, :max_age => 300]
+Dir[File.dirname(__FILE__) + '/lib/*.rb'].each {|file| require file }
 
 before do
   cache_control :public, :must_revalidate, :max_age => 30
 end
 
 get '/' do
-  send_file File.join(settings.public_folder, 'index.html')
-  #erb :index
-end
-
-get '/posts' do
-  rk = RecordKeeper.new
-  rk.all('posts').to_json
+  erb :index, :locals => { :posts => RecordStore::Posts.map }
 end
 
 get '/posts/*' do
-  rk = RecordKeeper.new
-  rk.find("posts/" + params[:splat].first + ".txt").to_json
+  post = RecordStore::Posts.find { |post| post.slug == params[:splat].first.downcase }
+  if post
+    erb :article, :locals => post.attributes
+  else
+    erb :article, :locals => RecordStore::NOTFOUND
+  end
 end
 
-get '/post/*' do
-  rk = RecordKeeper.new
-  p = rk.find("posts/" + params[:splat].first + ".txt")
-  erb :article, :locals => {:title => p.fetch("title"),
-                            :body  => p.fetch("body"),
-                            :date  => p.fetch("date"),
-                            :tags  => p.fetch("tags")}
+get '/tagged/*' do
+  erb :index, :locals => { :posts => RecordStore::Posts.find_all { |post| post.tags.map(&:downcase).include?(params[:splat].first.downcase) } }
 end
 
 get '/feed' do
-  rk = RecordKeeper.new
-  builder :feed, :locals => { :posts => rk.all('posts') }
+  builder :feed, :locals => { :posts => RecordStore::Posts.map }
 end

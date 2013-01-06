@@ -1,6 +1,0 @@
-{
-  "title" : "Challenging Challenges Are Challenging Me",
-  "date" : "12-06-12",
-  "body" : "<p>Whew! It has been a crazy week so far. This past Monday was the first official day of my challenges to wrap up my residency at 8th Light. I cannot believe that its been that long already. <img src='images/ludumdare24.PNG'> Sadly I cannot go into what my challenges actually are, but I can say that they&#39;ve kept me extremely busy this entire week and will be this weekend as well. After a quick trip to see my family for my Birthday tomorrow, it&#39;ll be back home to pack for my trip to Chicago.</p>",
-  "tags" : "8th Light, Development"
-}

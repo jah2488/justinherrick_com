@@ -1,5 +1,3 @@
-require 'uri'
-
 Post = Struct.new(:title, :body, :date, :tags) do
 
   def self.from_hash(attributes)
@@ -17,4 +15,5 @@ Post = Struct.new(:title, :body, :date, :tags) do
   def attributes
     Hash[members.zip(members.map { |name| self[name] })]
   end
+
 end

@@ -11,11 +11,8 @@ end
 
 get '/posts/*' do
   post = RecordStore::Posts.find { |post| post.slug == params[:splat].first.downcase }
-  if post
-    erb :article, :locals => post.attributes
-  else
-    erb :article, :locals => RecordStore::NOTFOUND
-  end
+  post = RecordStore::NOTFOUND if post.nil?
+  erb :article, :locals => { :post => post }
 end
 
 get '/tagged/*' do

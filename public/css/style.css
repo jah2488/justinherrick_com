@@ -80,8 +80,7 @@ article header h1 {
 }
 
 article a {
-	text-transform: uppercase;
-	padding: 0;
+  padding: 0;
 }
 
 article a:hover {
@@ -96,3 +95,29 @@ article img {
   margin: 10px auto;
 }
 
+article footer a {
+  color:#C3C3C3;
+}
+
+/* Smartphones (portrait and landscape) ----------- */
+@media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
+  body { margin: 0; }
+
+  #sidebar {
+    width: 100%;
+    position:inherit;
+    padding: 5px;
+    margin: 0px;
+    display:block;
+  }
+
+  #sidebar p { text-align:center; }
+  #nav { top:0px; left:9px; }
+
+  #content {
+    width: 100%;
+    float:left;
+    position:inherit;
+    margin:0px;
+  }
+}

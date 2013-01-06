@@ -1,17 +1,17 @@
 <article>
   <header>
     <h1>
-      <a href="/posts/<%= title.gsub(" ", "-") if title %>"><%= title %></a>
+      <a href="<%= url("posts/#{post.slug}") %>"><%= post.title %></a>
     </h1>
   </header>
   <hr>
   <div id='post'>
     <div>
-      <%= body %>
+      <%= post.body %>
     </div>
   </div>
   <footer>
-  <p> <%= date %> | <%= tags.map { |tag|  "<a href='" + url("tagged/" + tag) + "'>#{tag}</a> " } %> </p>
+  <p> <%= post.date %> |<% post.tags.each do |tag| %> <a href="<%= url("tagged/" + tag) %>">#<%= tag %></a> <% end %></p>
   </footer>
 </article>
 

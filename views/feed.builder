@@ -7,10 +7,10 @@ xml.rss :version => "2.0" do
 
     for post in locals[:posts]
       xml.item do
-        xml.title       post.fetch("title") { "None" }
-        xml.description post.fetch("body")  { "Emptiness..." }
-        xml.pubDate     post.fetch("date")  { "01-01-01" }
-        xml.link        "http://justinherrick.com/posts/#{post.fetch("title") { "404" }.downcase.gsub(" ", "-")}"
+        xml.title       post.title
+        xml.description post.body
+        xml.pubDate     post.date
+        xml.link        url("posts/" + post.slug)
       end
     end
   end
